@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 17:08:37 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/02 11:29:37 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/03 10:59:38 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void quicksort(int *number, int first, int last)
 		pivot = first;
 		i = first;
 		j = last;
-
 		while(i < j)
 		{
 			while(number[i] <= number[pivot] && i < last)
@@ -47,17 +46,11 @@ void quicksort(int *number, int first, int last)
 				number[j] = temp;
 			}
 		}
-
 		temp = number[pivot];
 		number[pivot] = number[j];
 		number[j] = temp;
 		quicksort(number, first, j - 1);
 		quicksort(number, j + 1, last);
-	}
-	ft_printf("\n\n\n");
-	while(first < last)
-	{
-		ft_printf("stack_a[%d] = %d\n", first, number[first++]);
 	}
 }
 
@@ -83,7 +76,8 @@ void	bubble_sort_array(int	*stack_a, int count)
 	ft_printf("\n\n\n");
 	while(i < count)
 	{
-		ft_printf("stack_a[%d] = %d\n", i, stack_a[i++]);
+		ft_printf("stack_a[%d] =-><-= %d\n", i, stack_a[i]);
+		i++;
 	}
 }
 
@@ -107,13 +101,25 @@ void	check_double(char *str)
 		if (str[i] != '\0')
 		{
 			stack_a[j] = atoi_for_ps(&str[i]);
-			printf("stack_a[%d] = %d\n", j, stack_a[j++]);
+			ft_printf("stack_a[%d] = %d\n", j, stack_a[j]);
+			j++;
 		}
 		while(ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 	}
 	//bubble_sort_array(stack_a, count);
 	quicksort(stack_a, 0, count - 1);
+	i = 0;
+	j = 0;
+	while(i < count - 1)
+	{
+		if (stack_a[i] == stack_a[i + 1])
+		{
+			ft_printf("<------>error\n");
+			exit (1);
+		}
+		i++;
+	}
 }
 
 void	validate_of_int(char *str)
