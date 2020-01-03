@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 09:26:50 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/02 11:27:14 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/03 11:28:46 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	atoi_for_ps(const char *str)
 	nbr = nbr * negative;
 	if (nbr > 2147483647 || nbr < -2147483648)
 	{
-        ft_printf("------error\n");
+        ft_printf("error <more_then_int>\n");
 		exit (1);
 	}
 	return ((int)nbr);

@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 17:08:37 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/03 10:59:38 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/03 17:47:24 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	bubble_sort_array(int	*stack_a, int count)
 void	check_double(char *str)
 {
 	int		*stack_a;
+	int		*tmp;
 	int		count;
 	int		i;
 	int     j;
@@ -107,22 +108,24 @@ void	check_double(char *str)
 		while(ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 	}
+	tmp = stack_a;
 	//bubble_sort_array(stack_a, count);
-	quicksort(stack_a, 0, count - 1);
+	quicksort(tmp, 0, count - 1);
 	i = 0;
 	j = 0;
 	while(i < count - 1)
 	{
-		if (stack_a[i] == stack_a[i + 1])
+		if (tmp[i] == tmp[i + 1])
 		{
-			ft_printf("<------>error\n");
+			ft_printf("error <double>\n");
 			exit (1);
 		}
 		i++;
 	}
+	create_stack_a(stack_a, count);
 }
 
-void	validate_of_int(char *str)
+void	validate_of_stack(char *str)
 {
 	int i;
 
@@ -135,8 +138,16 @@ void	validate_of_int(char *str)
 		if (str[i] != '\0')
 			atoi_for_ps(&str[i]);
 		while(ft_isdigit(str[i]) || str[i] == '-')
+		{
+			if(ft_isdigit(str[i]) && str[i + 1] == '-')
+			{
+				ft_printf("error <error_pos_minus>\n");
+				exit (1);
+			}
 			i++;
+		}
 	}
+	check_double(str);
 }
 
 int		validelemet(char *stack1)

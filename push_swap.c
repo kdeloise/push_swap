@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 21:12:46 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/02 11:16:09 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/03 11:48:04 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,8 @@ int 	main(int argc, char **argv)
 	}
 	if(str)
 	{
-		validate_of_int(str);
+		validate_of_stack(str);
 		ft_printf("%s\n", str);
-		check_double(str);
 	}
 	else
 		ft_printf("don't have stack\n");

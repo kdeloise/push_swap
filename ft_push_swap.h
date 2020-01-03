@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 21:12:22 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/02 11:17:48 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/03 17:49:59 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,17 @@
 
 # include "ft_printf/ft_printf.h"
 
-int		atoi_for_ps(const char *str);
-int		len_nbr(char *str);
-int		validelemet(char *stack1);
-void	validate_of_int(char *str);
-void	check_double(char *str);
+typedef struct			s_stack
+{
+	int					data;
+	struct s_stack		*next;
+}						t_stack;
+
+int						atoi_for_ps(const char *str);
+int						len_nbr(char *str);
+int						validelemet(char *stack1);
+void					validate_of_stack(char *str);
+void					check_double(char *str);
+void					create_stack_a(int *stack_a, int size_of_stack);
 
 #endif
