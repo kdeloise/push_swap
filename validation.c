@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 17:08:37 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/03 17:47:24 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/13 19:42:37 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,17 +81,19 @@ void	bubble_sort_array(int	*stack_a, int count)
 	}
 }
 
-void	check_double(char *str)
+t_fl    check_double(char *str)
 {
 	int		*stack_a;
 	int		*tmp;
-	int		count;
+	t_fl    fl;
 	int		i;
 	int     j;
+	t_stack	*a;
 
-	count = len_nbr(str);
-	ft_printf("count - %d\n", count);
-	stack_a = (int *)malloc(sizeof(int) * count);
+	fl.count = len_nbr(str);
+	ft_printf("count - %d\n", fl.count);
+	stack_a = (int *)malloc(sizeof(int) * fl.count);
+	tmp = (int *)malloc(sizeof(int) * fl.count);
 	i = 0;
 	j = 0;
 	while(str[i] != '\0')
@@ -102,18 +104,25 @@ void	check_double(char *str)
 		if (str[i] != '\0')
 		{
 			stack_a[j] = atoi_for_ps(&str[i]);
+			tmp[j] = atoi_for_ps(&str[i]);
 			ft_printf("stack_a[%d] = %d\n", j, stack_a[j]);
 			j++;
 		}
 		while(ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 	}
-	tmp = stack_a;
 	//bubble_sort_array(stack_a, count);
-	quicksort(tmp, 0, count - 1);
+	quicksort(tmp, 0, fl.count - 1);
+	i = 0;
+	ft_printf("\n\nsorted array_of_int\n");
+	while(i < fl.count)
+	{
+		ft_printf("stack[%d] = %d\n", i, tmp[i]);
+		i++;
+	}
 	i = 0;
 	j = 0;
-	while(i < count - 1)
+	while(i < fl.count - 1)
 	{
 		if (tmp[i] == tmp[i + 1])
 		{
@@ -122,12 +131,18 @@ void	check_double(char *str)
 		}
 		i++;
 	}
-	create_stack_a(stack_a, count);
+	ft_printf("\n\n");
+	fl.a = create_stack_a(stack_a, fl.count);
+	if (fl.a)
+		create_stack_b(&fl);
+	ft_printf("\nfl->count = %d\n", fl.count);
+	return(fl);
 }
 
-void	validate_of_stack(char *str)
+t_fl    validate_of_stack(char *str)
 {
-	int i;
+	int     i;
+	t_fl    fl;
 
 	i = 0;
 	while(str[i])
@@ -147,7 +162,8 @@ void	validate_of_stack(char *str)
 			i++;
 		}
 	}
-	check_double(str);
+	fl = check_double(str);
+    return (fl);
 }
 
 int		validelemet(char *stack1)

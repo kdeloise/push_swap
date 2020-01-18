@@ -38,6 +38,7 @@ int 	main(int argc, char **argv)
 	int		i;
 	char	*str;
 	char	*space;
+	t_fl    fl;
 
 	i = 1;
 	while(argv[i])
@@ -67,8 +68,10 @@ int 	main(int argc, char **argv)
 	}
 	if(str)
 	{
-		validate_of_stack(str);
+		fl = validate_of_stack(str);
 		ft_printf("%s\n", str);
+		ft_printf("\ncount = %d--\n", fl.count);
+		print_stack(fl.b);
 	}
 	else
 		ft_printf("don't have stack\n");
