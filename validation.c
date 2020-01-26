@@ -12,18 +12,6 @@
 
 #include "ft_push_swap.h"
 
-// int sizeof_int(char *stack1)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while(stack1[i])
-// 	{
-// 		if (ft_atoi(stack1[i]) > );
-
-// 	}
-// }
-
 void quicksort(int *number, int first, int last)
 {
 	int i, j, pivot, temp;

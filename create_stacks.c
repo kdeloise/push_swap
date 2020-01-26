@@ -6,7 +6,7 @@
 /*   By: kdeloise <kdeloise@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 11:43:24 by kdeloise          #+#    #+#             */
-/*   Updated: 2020/01/12 18:00:52 by kdeloise         ###   ########.fr       */
+/*   Updated: 2020/01/26 07:14:01 by kdeloise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack		*create_stack_a(int *stack_a, int size_of_stack)
 	i = 0;
 	if (!(a = (t_stack *)malloc(sizeof(t_stack))))
 		exit(1);
+	a->next = NULL;
 	start = a;
 	while(i < size_of_stack)
 	{
@@ -34,14 +35,6 @@ t_stack		*create_stack_a(int *stack_a, int size_of_stack)
 			a->next = NULL;
 		else
 			a = a->next;
-		i++;
-	}
-	a = start;
-	i = 0;
-	while(a)
-	{
-		ft_printf("list stack[%d] = %d\n", i, a->data);
-		a = a->next;
 		i++;
 	}
 	a = start;
@@ -64,7 +57,7 @@ void		create_stack_b(t_fl *fl)
 			fl->b->next = NULL;
 		else if (!(fl->b->next = (t_stack *)malloc(sizeof(t_stack))))
 			exit(1);
-		fl->b->data = 0;
+		fl->b->data = fl->a->data; //fl->b->data = 0 !!!!!!!!!!!!!!!!
 		fl->a = fl->a->next;
 		fl->b = fl->b->next;
 	}
@@ -74,10 +67,10 @@ void		create_stack_b(t_fl *fl)
 
 void		print_stack(t_stack	*stack)
 {
-	ft_printf("\n-----------\nit's data of stack\n-----------\n");
 	while(stack)
 	{
 		ft_printf("|%d| ", stack->data);
 		stack = stack->next;
 	}
+    ft_printf("\n");
 }

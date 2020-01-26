@@ -23,10 +23,10 @@ typedef struct			s_stack
 
 typedef struct			s_fl
 {
-	int					min;
-	int					max;
-	int					med;
-	int					count;
+	int					min; //min_of_stack
+	int					max; //max_of_stack
+	int					med; //med_of_stack
+	int					count; //size_of_stack
     t_stack             *a;
     t_stack             *b;
 }						t_fl;
@@ -39,5 +39,14 @@ t_fl					check_double(char *str);
 t_stack					*create_stack_a(int *stack_a, int size_of_stack);
 void                    create_stack_b(t_fl *fl);
 void					print_stack(t_stack	*stack);
+void                    ft_sa(t_stack **stack_a);
+void                    ft_sb(t_stack **stack_b);
+void					ft_ss(t_fl	*stacks);
+void					ft_ra(t_stack **stack_a);
+void					ft_rb(t_stack **stack_b);
+void					ft_rr(t_fl *stacks);
+void					ft_rra(t_stack **stack_a);
+void					ft_rrb(t_stack **stack_b);
+void					ft_rrr(t_fl *stacks);
 
 #endif

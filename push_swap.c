@@ -71,6 +71,14 @@ int 	main(int argc, char **argv)
 		fl = validate_of_stack(str);
 		ft_printf("%s\n", str);
 		ft_printf("\ncount = %d--\n", fl.count);
+		ft_printf("\n-----------\nit's data of stack_b\n-----------\n");
+		print_stack(fl.b);
+		ft_printf("\n-----------\nit's data of stack_a\n-----------\n");
+        print_stack(fl.a);
+		ft_rrr(&fl);
+		ft_printf("\n-----------\nit's data of stack_a<com>\n-----------\n");
+		print_stack(fl.a);
+		ft_printf("\n-----------\nit's data of stack_b<com>\n-----------\n");
 		print_stack(fl.b);
 	}
 	else
