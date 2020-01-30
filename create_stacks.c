@@ -48,29 +48,33 @@ void		create_stack_b(t_fl *fl)
 
 	if(!(fl->b = (t_stack *)malloc(sizeof(t_stack))))
 		exit(1);
-	fl->b->data = 0;
-	start_b = fl->b;
-	start_a = fl->a;
-	while(fl->a)
-	{
-		if (fl->a->next == NULL)
-			fl->b->next = NULL;
-		else if (!(fl->b->next = (t_stack *)malloc(sizeof(t_stack))))
-			exit(1);
-		fl->b->data = fl->a->data; //fl->b->data = 0 !!!!!!!!!!!!!!!!
-		fl->a = fl->a->next;
-		fl->b = fl->b->next;
-	}
-	fl->b = start_b;
-	fl->a = start_a;
+	fl->b = NULL;
+//	start_b = fl->b;
+//	start_a = fl->a;
+//	while(fl->a)
+//	{
+//		if (fl->a->next == NULL)
+//			fl->b->next = NULL;
+//		else if (!(fl->b->next = (t_stack *)malloc(sizeof(t_stack))))
+//			exit(1);
+//		fl->b->data = fl->a->data + 7; //fl->b->data = 0 !!!!!!!!!!!!!!!!
+//		fl->a = fl->a->next;
+//		fl->b = fl->b->next;
+//	}
+//	fl->b = start_b;
+//	fl->a = start_a;
 }
 
 void		print_stack(t_stack	*stack)
 {
+	t_stack *start;
+
+	start = stack;
 	while(stack)
 	{
 		ft_printf("|%d| ", stack->data);
 		stack = stack->next;
 	}
     ft_printf("\n");
+	stack = start;
 }

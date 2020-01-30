@@ -101,6 +101,10 @@ t_fl    check_double(char *str)
 	}
 	//bubble_sort_array(stack_a, count);
 	quicksort(tmp, 0, fl.count - 1);
+	fl.min = tmp[0];
+	fl.max = tmp[fl.count - 1];
+	fl.med = tmp[fl.count / 2];
+	fl.sorted_stack = tmp;
 	i = 0;
 	ft_printf("\n\nsorted array_of_int\n");
 	while(i < fl.count)
@@ -124,6 +128,8 @@ t_fl    check_double(char *str)
 	if (fl.a)
 		create_stack_b(&fl);
 	ft_printf("\nfl->count = %d\n", fl.count);
+	free(stack_a);
+	free(tmp);
 	return(fl);
 }
 

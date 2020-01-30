@@ -18,6 +18,8 @@ void ft_rra(t_stack **stack_a) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
 	t_stack		*last;
 	t_stack		*prelast;
 
+	if (!(*stack_a) || !(*stack_a)->next)
+		return ;
 	start = (*stack_a);
 	while ((*stack_a)->next)
 	{
@@ -40,6 +42,8 @@ void ft_rrb(t_stack **stack_b) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
 	t_stack		*last;
 	t_stack		*prelast;
 
+	if (!(*stack_b) || !(*stack_b)->next)
+		return ;
 	start = (*stack_b);
 	while ((*stack_b)->next)
 	{

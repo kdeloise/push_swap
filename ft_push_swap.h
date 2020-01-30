@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #ifndef FT_PUSH_SWAP_H
-# define FT_PUSH_SWAP_H
+# define FT_PUSH_SWAP_Hx§
 
 # include "ft_printf/ft_printf.h"
 
@@ -27,6 +27,7 @@ typedef struct			s_fl
 	int					max; //max_of_stack
 	int					med; //med_of_stack
 	int					count; //size_of_stack
+	int					*sorted_stack;
     t_stack             *a;
     t_stack             *b;
 }						t_fl;
@@ -48,5 +49,8 @@ void					ft_rr(t_fl *stacks);
 void					ft_rra(t_stack **stack_a);
 void					ft_rrb(t_stack **stack_b);
 void					ft_rrr(t_fl *stacks);
+void					ft_pa(t_stack **stack_a, t_stack **stack_b);
+void					ft_pb(t_stack **stack_a, t_stack **stack_b);
+void					push_swap_sort(t_fl *fl);
 
 #endif
