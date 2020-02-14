@@ -42,33 +42,6 @@ void quicksort(int *number, int first, int last)
 	}
 }
 
-
-void	bubble_sort_array(int	*stack_a, int count)
-{
-	int	i;
-	int swp;
-
-	i = 0;
-	while(i < count - 1)
-	{
-		if(stack_a[i] > stack_a[i + 1])
-		{
-			swp = stack_a[i];
-			stack_a[i] = stack_a[i + 1];
-			stack_a[i + 1] = swp;
-			i = -1;
-		}
-		i++;
-	}
-	i = 0;
-	ft_printf("\n\n\n");
-	while(i < count)
-	{
-		ft_printf("stack_a[%d] =-><-= %d\n", i, stack_a[i]);
-		i++;
-	}
-}
-
 t_fl    check_double(char *str)
 {
 	int		*stack_a;
@@ -78,10 +51,10 @@ t_fl    check_double(char *str)
 	int     j;
 	t_stack	*a;
 
-	fl.count = len_nbr(str);
-	ft_printf("count - %d\n", fl.count);
-	stack_a = (int *)malloc(sizeof(int) * fl.count);
-	tmp = (int *)malloc(sizeof(int) * fl.count);
+	fl.count_a = len_nbr(str);
+//ft_printf("count_a - %d\n", fl.count_a);
+	stack_a = (int *)malloc(sizeof(int) * fl.count_a);
+	tmp = (int *)malloc(sizeof(int) * fl.count_a);
 	i = 0;
 	j = 0;
 	while(str[i] != '\0')
@@ -93,41 +66,41 @@ t_fl    check_double(char *str)
 		{
 			stack_a[j] = atoi_for_ps(&str[i]);
 			tmp[j] = atoi_for_ps(&str[i]);
-			ft_printf("stack_a[%d] = %d\n", j, stack_a[j]);
+//ft_printf("stack_a[%d] = %d\n", j, stack_a[j]);
 			j++;
 		}
 		while(ft_isdigit(str[i]) || str[i] == '-')
 			i++;
 	}
-	//bubble_sort_array(stack_a, count);
-	quicksort(tmp, 0, fl.count - 1);
+	//bubble_sort_array(stack_a, count_a);
+	quicksort(tmp, 0, fl.count_a - 1);
 	fl.min = tmp[0];
-	fl.max = tmp[fl.count - 1];
-	fl.med = tmp[fl.count / 2];
+	fl.max = tmp[fl.count_a - 1];
+	fl.med = tmp[fl.count_a / 2];
 	fl.sorted_stack = tmp;
 	i = 0;
-	ft_printf("\n\nsorted array_of_int\n");
-	while(i < fl.count)
+//ft_printf("\n\nsorted array_of_int\n");
+	while(i < fl.count_a)
 	{
-		ft_printf("stack[%d] = %d\n", i, tmp[i]);
+//ft_printf("stack[%d] = %d\n", i, tmp[i]);
 		i++;
 	}
 	i = 0;
 	j = 0;
-	while(i < fl.count - 1)
+	while(i < fl.count_a - 1)
 	{
 		if (tmp[i] == tmp[i + 1])
 		{
-			ft_printf("error <double>\n");
+//ft_printf("error <double>\n");
 			exit (1);
 		}
 		i++;
 	}
-	ft_printf("\n\n");
-	fl.a = create_stack_a(stack_a, fl.count);
+//ft_printf("\n\n");
+	fl.a = create_stack_a(stack_a, fl.count_a);
 	if (fl.a)
 		create_stack_b(&fl);
-	ft_printf("\nfl->count = %d\n", fl.count);
+//ft_printf("\nfl->count_a = %d\n", fl.count_a);
 	free(stack_a);
 	free(tmp);
 	return(fl);
@@ -150,7 +123,7 @@ t_fl    validate_of_stack(char *str)
 		{
 			if(ft_isdigit(str[i]) && str[i + 1] == '-')
 			{
-				ft_printf("error <error_pos_minus>\n");
+//ft_printf("error <error_pos_minus>\n");
 				exit (1);
 			}
 			i++;

@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-void	ft_sa(t_stack **stack_a)
+void	ft_sa(t_stack **stack_a, t_fl	*fl)
 {
 	t_stack *first;
 	t_stack *second;
@@ -25,10 +25,13 @@ void	ft_sa(t_stack **stack_a)
 	(*stack_a) = second;
 	first->next = (*stack_a)->next;
 	(*stack_a)->next = first;
-	ft_printf("sa\n");
+	if (fl->flag_for_print == 0)
+		ft_printf("sa\n");
+	fl->flag_for_print = 0;
+	fl->count_step++;
 }
 
-void	ft_sb(t_stack **stack_b)
+void	ft_sb(t_stack **stack_b, t_fl	*fl)
 {
 	t_stack *first;
 	t_stack *second;
@@ -41,12 +44,18 @@ void	ft_sb(t_stack **stack_b)
 	(*stack_b) = second;
 	first->next = (*stack_b)->next;
 	(*stack_b)->next = first;
-	ft_printf("sb\n");
+	if (fl->flag_for_print == 0)
+		ft_printf("sb\n");
+	fl->flag_for_print = 0;
+	fl->count_step++;
 }
 
-void	ft_ss(t_fl	*stacks)
+void	ft_ss(t_fl	*stacks, t_fl	*fl)
 {
-	ft_sa(&stacks->a);
-	ft_sb(&stacks->b);
+	fl->flag_for_print = 1;
+	ft_sa(&stacks->a, fl);
+	fl->flag_for_print = 1;
+	ft_sb(&stacks->b, fl);
 	ft_printf("ss\n");
+	fl->count_step++;
 }

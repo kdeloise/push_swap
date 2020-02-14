@@ -14,7 +14,7 @@
 
 // stack_a = |1| -> |2| -> |3 | -> NULL
 // stack_b = |8| -> |9| -> |10| -> NULL
-void ft_pa(t_stack **stack_a, t_stack **stack_b)
+void ft_pa(t_stack **stack_a, t_stack **stack_b, t_fl *fl)
 {
 	t_stack		*first_b;
 
@@ -22,10 +22,12 @@ void ft_pa(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->next = (*stack_a);		//|8| -> |1 | -> |2| -> |3 | -> NULL
 	(*stack_a) = (*stack_b);			//|8| -> |1 | -> |2| -> |3 | -> NULL
 	(*stack_b) = first_b;				//|9| -> |10| -> NULL
+	fl->count_a++;
+	fl->count_b--;
 	ft_printf("pa\n");
 }
 
-void ft_pb(t_stack **stack_a, t_stack **stack_b)
+void ft_pb(t_stack **stack_a, t_stack **stack_b, t_fl * fl)
 {
 	t_stack		*first_a;
 
@@ -33,5 +35,7 @@ void ft_pb(t_stack **stack_a, t_stack **stack_b)
 	(*stack_a)->next = (*stack_b);		//|1| -> |8 | -> |9| -> |10| -> NULL
 	(*stack_b) = (*stack_a);			//|1| -> |8 | -> |9| -> |10| -> NULL
 	(*stack_a) = first_a;				//|2| -> |3| -> NULL
+	fl->count_a--;
+	fl->count_b++;
 	ft_printf("pb\n");
 }

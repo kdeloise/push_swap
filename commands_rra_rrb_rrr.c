@@ -12,7 +12,7 @@
 
 #include "ft_push_swap.h"
 
-void ft_rra(t_stack **stack_a) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
+void ft_rra(t_stack **stack_a, t_fl	*fl) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
 {
 	t_stack		*start;
 	t_stack		*last;
@@ -33,10 +33,13 @@ void ft_rra(t_stack **stack_a) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
 	prelast->next = NULL;
 	last->next = start;
 	(*stack_a) = last;
-	ft_printf("rra\n");
+	if (fl->flag_for_print == 0)
+		ft_printf("rra\n");
+	fl->flag_for_print = 0;
+	fl->count_step++;
 }
 
-void ft_rrb(t_stack **stack_b) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
+void ft_rrb(t_stack **stack_b, t_fl	*fl) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
 {
 	t_stack		*start;
 	t_stack		*last;
@@ -57,12 +60,18 @@ void ft_rrb(t_stack **stack_b) // stack_a = |1| -> |2| -> |3| -> |4| -> NULL
 	prelast->next = NULL;
 	last->next = start;
 	(*stack_b) = last;
-	ft_printf("rrb\n");
+	if (fl->flag_for_print == 0)
+		ft_printf("rrb\n");
+	fl->flag_for_print = 0;
+	fl->count_step++;
 }
 
-void					ft_rrr(t_fl *stacks)
+void	ft_rrr(t_fl *stacks, t_fl	*fl)
 {
-	ft_rra(&stacks->a);
-	ft_rrb(&stacks->b);
+	fl->flag_for_print = 1;
+	ft_rra(&stacks->a, fl);
+	fl->flag_for_print = 1;
+	ft_rrb(&stacks->b, fl);
 	ft_printf("rrr\n");
+	fl->count_step++;
 }
